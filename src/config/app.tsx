@@ -1,6 +1,6 @@
 /** @class Local */
 class Misc {
-     static readonly delay = 2500
+     static readonly loadingDelay = 2500
 }
 
 export {Misc};

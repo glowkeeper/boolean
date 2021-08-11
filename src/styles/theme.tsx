@@ -137,8 +137,9 @@ const themeStyles = makeStyles({
     overflow: 'auto',
     width: '100vw',
     position: 'absolute',
-    bottom: '120px',
-    top: '75px',
+  },
+  storiesGridList: {
+    width: '100vw',
   },
   spinner: {
     position: 'absolute',
