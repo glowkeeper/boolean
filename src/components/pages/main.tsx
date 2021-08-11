@@ -4,7 +4,7 @@ import GoogleFontLoader from 'react-google-font-loader';
 
 import Grid from '@material-ui/core/Grid';
 
-import {Home} from '.';
+import {Home} from './home';
 
 import {themeStyles} from '../../styles';
 

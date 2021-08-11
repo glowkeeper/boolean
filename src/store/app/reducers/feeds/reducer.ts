@@ -1,4 +1,4 @@
-import {ActionProps, GetActionTypes, GetProps} from '../types';
+import {ActionProps, FeedsActionTypes, GetProps} from '../../../types';
 
 const initialState: GetProps = {
   data: [],
@@ -7,12 +7,12 @@ const initialState: GetProps = {
 export const reducer =
   (state: GetProps = initialState, action: ActionProps): GetProps => {
     switch (action.type) {
-      case GetActionTypes.GET_FAILURE:
-      case GetActionTypes.GET_INIT: {
+      case FeedsActionTypes.FEEDS_FAILURE:
+      case FeedsActionTypes.FEEDS_INIT: {
         const data = (action.payload as GetProps);
         return data;
       }
-      case GetActionTypes.GET_SUCCESS: {
+      case FeedsActionTypes.FEEDS_SUCCESS: {
         const data = (action.payload as GetProps);
         return {...state, ...data};
       }

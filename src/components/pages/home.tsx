@@ -1,11 +1,10 @@
-import React from 'react'
-import { Home as HomeConfig } from '../../config'
+import React from 'react';
+import {Stories} from './stories';
 
 export const Home = () => {
-
   return (
     <React.Fragment>
-        blah
+      <Stories />
     </React.Fragment>
-  )
-}
+  );
+};
