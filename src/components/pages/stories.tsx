@@ -9,7 +9,9 @@ import Spinner from 'react-spinner-material';
 
 import {getStories} from '../../store/app/actions';
 
-import {themeStyles} from '../../styles';
+import {theme, themeStyles} from '../../styles';
+
+import {Misc} from '../../config';
 
 import {
   ApplicationState,
@@ -35,52 +37,71 @@ const display = (props: Props) => {
 
   useEffect(() => {
     props.getStories();
+    const loading = setTimeout(() => {
+      setIsLoading(false);
+    }, Misc.loadingDelay);
+
+    return () => clearTimeout(loading);
   }, []);
 
-  useEffect(() => {
-    setIsLoading(false);
-  }, [props.stories]);
-
   return (
-    <Grid container alignItems="flex-start">
+    <>
+      <Grid
+        item
+        container
+        justifyContent='center'
+        alignItems='flex-start'
+        style={{
+          margin: theme.spacing(1),
+          padding: theme.spacing(1),
+          border: '1px solid grey',
+        }}
+        xs={12}
+      >
 
-      { isLoading ?
-        <Grid className={classes.spinner} item container justify="center">
-          <Spinner
-            radius={40}
-            color={'#001C32'}
-            stroke={5}
-            visible={isLoading}
-          />
-        </Grid> : (
+        { isLoading ?
+          <Grid
+            className={classes.spinner}
+            item
+            container
+            justifyContent="center"
+          >
+            <Spinner
+              radius={40}
+              color={'#001C32'}
+              stroke={5}
+              visible={isLoading}
+            />
+          </Grid> : (
 
-          props.stories.data.map( ( story: Story, index: number ) => {
-            // console.log(story)
+              props.stories.data.map( ( story: Story, index: number ) => {
+                return (
 
-            return (
-              <React.Fragment key={index}>
-                <Grid item container justify="flex-start" xs={1}>
-                  <Grid item container justify="center" xs={12}>
-                    <Avatar
-                      alt='Story Icon'
-                      style={{
-                        border: '0.1px solid lightgray',
-                      }}
-                      src={story.profile_picture} />
-                  </Grid>
-                  <Grid item container justify="center" xs={12}>
-                    <Typography variant="body1">
-                      {story.profile_name}
-                    </Typography>
-                  </Grid>
-                </Grid>
+                  <React.Fragment key={index}>
+                    <Grid item container justify="flex-start" xs={1}>
+                      <Grid item container justify="center" xs={12}>
+                        <Avatar
+                          alt='Story Icon'
+                          style={{
+                            border: '0.1px solid lightgray',
+                          }}
+                          src={story.profile_picture} />
+                      </Grid>
+                      <Grid item container justify="center" xs={12}>
+                        <Typography variant="body1">
+                          {story.profile_name}
+                        </Typography>
+                      </Grid>
+                    </Grid>
 
-              </React.Fragment>
-            );
-          })
-        )
-      }
-    </Grid>
+                  </React.Fragment>
+                );
+              })
+          )
+        }
+
+      </Grid>
+    </>
   );
 };
 
