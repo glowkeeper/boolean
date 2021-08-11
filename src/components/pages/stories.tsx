@@ -4,28 +4,29 @@ import {connect} from 'react-redux';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
+import {CircularProgress} from '@material-ui/core';
 
-import Spinner from 'react-spinner-material';
-
-import {getStories} from '../../store/app/actions';
-
-import {theme, themeStyles} from '../../styles';
-
-import {Misc} from '../../config';
-
+import {getURL} from '../../store/app/actions';
 import {
   ApplicationState,
   AppDispatch,
+  StoriesActionTypes,
   StoryProps,
   Story,
 } from '../../store';
+
+import {Remote, Misc} from '../../config';
 
 interface StoriesStateProps {
   stories: StoryProps
 }
 
 interface StoriesDispatchProps {
-  getStories: () => void
+  getStories: (
+    url: string,
+    successAction: string,
+    failureAction: string,
+  ) => void
 }
 
 type Props = StoriesStateProps & StoriesDispatchProps
@@ -33,10 +34,12 @@ type Props = StoriesStateProps & StoriesDispatchProps
 const display = (props: Props) => {
   const [isLoading, setIsLoading] = useState(true);
 
-  const classes = themeStyles();
-
   useEffect(() => {
-    props.getStories();
+    props.getStories(
+        Remote.stories,
+        StoriesActionTypes.STORIES_SUCCESS,
+        StoriesActionTypes.STORIES_FAILURE,
+    );
     const loading = setTimeout(() => {
       setIsLoading(false);
     }, Misc.loadingDelay);
@@ -45,63 +48,58 @@ const display = (props: Props) => {
   }, []);
 
   return (
-    <>
-      <Grid
-        item
-        container
-        justifyContent='center'
-        alignItems='flex-start'
-        style={{
-          margin: theme.spacing(1),
-          padding: theme.spacing(1),
-          border: '1px solid grey',
-        }}
-        xs={12}
-      >
+    <Grid
+      item
+      container
+      justifyContent='center'
+      alignItems='center'
+      style={{
+        border: '1px solid grey',
+        height: '100px',
+      }}
+      xs={12}
+    >
 
-        { isLoading ?
-          <Grid
-            className={classes.spinner}
-            item
-            container
-            justifyContent="center"
-          >
-            <Spinner
-              radius={40}
-              color={'#001C32'}
-              stroke={5}
-              visible={isLoading}
-            />
-          </Grid> : (
+      { isLoading ?
+        <Grid
+          container
+          justifyContent="center"
+        >
+          <CircularProgress
+            size={40}
+          />
+        </Grid> : (
 
-              props.stories.data.map( ( story: Story, index: number ) => {
-                return (
+            props.stories.data.map( ( story: Story, index: number ) => {
+              return (
 
-                  <React.Fragment key={index}>
-                    <Grid item container justify="flex-start" xs={1}>
-                      <Grid item container justify="center" xs={12}>
-                        <Avatar
-                          alt='Story Icon'
-                          style={{
-                            border: '0.1px solid lightgray',
-                          }}
-                          src={story.profile_picture} />
-                      </Grid>
-                      <Grid item container justify="center" xs={12}>
-                        <Typography variant="body1">
-                          {story.profile_name}
-                        </Typography>
-                      </Grid>
+                <React.Fragment key={index}>
+                  <Grid item container justifyContent="flex-start" xs={1}>
+                    <Grid item container justifyContent="center" xs={12}>
+                      <Avatar
+                        alt='Story Icon'
+                        style={{
+                          border: '0.5px solid red',
+                        }}
+                        src={story.profile_picture} />
                     </Grid>
+                    <Grid item container justifyContent="center" xs={12}>
+                      <Typography
+                        variant="body1"
+                        noWrap={true}
+                      >
+                        {story.profile_name}
+                      </Typography>
+                    </Grid>
+                  </Grid>
 
-                  </React.Fragment>
-                );
-              })
-          )
-        }
+                </React.Fragment>
+              );
+            })
+        )
+      }
 
-      </Grid>
-    </>
+    </Grid>
   );
 };
 
@@ -114,7 +112,11 @@ const mapStateToProps = (state: ApplicationState): StoriesStateProps => {
 
 const mapDispatchToProps = (dispatch: AppDispatch): StoriesDispatchProps => {
   return {
-    getStories: () => dispatch(getStories()),
+    getStories: (
+        url: string,
+        successAction: string,
+        failureAction: string,
+    ) => dispatch(getURL(url, successAction, failureAction)),
   };
 };
 

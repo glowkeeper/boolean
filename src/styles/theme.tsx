@@ -136,16 +136,6 @@ const themeStyles = makeStyles({
     background: 'linear-gradient(#FFFFFF, #FFFFFF)',
     overflow: 'auto',
     width: '100vw',
-    position: 'absolute',
-  },
-  storiesGridList: {
-    width: '100vw',
-  },
-  spinner: {
-    position: 'absolute',
-    left: '50%',
-    top: '50%',
-    transform: 'translate(-50%, -50%)',
   },
 });
 

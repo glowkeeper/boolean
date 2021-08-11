@@ -4,7 +4,8 @@ import GoogleFontLoader from 'react-google-font-loader';
 
 import Grid from '@material-ui/core/Grid';
 
-import {Home} from './home';
+import {Stories} from './stories';
+import {Feeds} from './feeds';
 
 import {themeStyles} from '../../styles';
 
@@ -12,7 +13,7 @@ export const Main = () => {
   const classes = themeStyles();
 
   return (
-    <Grid className={classes.root}>
+    <Grid container className={classes.root}>
 
       <GoogleFontLoader
         fonts={[
@@ -27,8 +28,29 @@ export const Main = () => {
         ]}
       />
 
-      <Grid className={classes.content} item container xs={12}>
-        <Home />
+      <Grid
+        className={classes.content}
+        item
+        container
+        xs={12}
+      >
+        <Grid
+          item
+          xs={2}
+        ></Grid>
+
+        <Grid
+          item
+          xs={8}
+        >
+          <Stories />
+          <Feeds />
+        </Grid>
+
+        <Grid
+          item
+          xs={2}
+        ></Grid>
       </Grid>=
 
     </Grid>

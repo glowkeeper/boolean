@@ -20,11 +20,6 @@ export interface ActionProps extends Action {
 
 export type AppDispatch = ThunkDispatch<ApplicationState, any, ActionProps>
 
-// Get stuff
-export interface Data {
-  info: string
-}
-
 export interface Story {
   profile_picture: string
   profile_name: string
@@ -34,12 +29,12 @@ export interface StoryProps extends PayloadProps {
   data: Array<Story>
 }
 
-export interface Comments {
+export interface Comment {
   username: string
   text: string
 }
 
-export interface Likes {
+export interface Like {
   username: string
   profile_picture: string
 }
@@ -55,8 +50,8 @@ export interface Feed {
       timezone_type: number,
       timezone: string
   },
-  comments: Array<Comments>
-  likes: Array<Likes>
+  comments: Array<Comment>
+  likes: Array<Like>
 }
 
 export interface FeedProps extends PayloadProps {
