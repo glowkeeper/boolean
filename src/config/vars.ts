@@ -15,11 +15,6 @@ class Paths {
   static readonly home = 'Home'
 }
 
-/** @class GeneralError */
-class GeneralError {
-    static readonly required = 'Required'
-}
-
 /** @class Home */
 class Home {
   static readonly heading = 'Home'
@@ -30,6 +25,5 @@ class Home {
 
 export {App,
   Paths,
-  GeneralError,
   Home,
 };
