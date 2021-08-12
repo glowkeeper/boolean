@@ -11,10 +11,6 @@ Programming task for [Boolean](https://boolean.co.uk/).
 - [Build](#build)
 - [Maintainer](#maintainer)
 
-## Usage
-
-Below shows you how to use the demo' applications that showcase EOR, which is deployed at address [0x5483b2996BBa07330E188Fe10BB101d4c1Ac8530](https://rinkeby.etherscan.io/token/0x5483b2996bba07330e188fe10bb101d4c1ac8530) on Ethereum's Rinkeby Test Network.
-
 ## Built Using
 
 - [node](https://nodejs.org/en/)
