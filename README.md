@@ -23,7 +23,7 @@ This project uses [node](http://nodejs.org/) and [npm](https://npmjs.com/) - ple
 
 ## Build
 
-Create the app' by running `npm run prod` - that creates a file called _index.html_, which you can open in your favourite browser - enjoy!
+Create the app' by running `npm run prod` - that creates a file called _index.html_ in the _build_ subdirectory, which you can open in your favourite browser - enjoy!
 
 ## Maintainer
 
