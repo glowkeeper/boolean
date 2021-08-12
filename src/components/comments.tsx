@@ -30,68 +30,52 @@ export const Comments = (props: Props) => {
         <Typography
           variant="body1"
         >
-          {props.comments.length} Comments
-        </Typography>
-      </Grid>
-
-      <Grid
-        item
-        container
-        justifyContent="flex-start"
-        style={{
-          padding: theme.spacing(1),
-        }}
-        xs={12}
-      >
-        <Typography
-          variant="body1"
-        >
-          {props.comments.length ?
-            `Showing the first: 
-            ${props.comments[0].username} ${props.comments[0].text}`:
-            ''
-          }
+          {props.comments.length} Comment(s)
         </Typography>
       </Grid>
 
       {
-        props.comments.map( (comment: Comment) => {
-          <Grid
-            item
-            container
-            justifyContent="flex-start"
-            style={{
-              padding: theme.spacing(1),
-            }}
-            xs={12}
-          >
-            <Grid
-              item
-              container
-              justifyContent="flex-start"
-              xs={2}
-            >
-              <Typography
-                variant="body1"
-                noWrap={true}
+        props.comments.map( (comment: Comment, index: number) => {
+          return (
+            <React.Fragment key={index}>
+              <Grid
+                item
+                container
+                justifyContent="flex-start"
+                style={{
+                  padding: theme.spacing(1),
+                }}
+                xs={12}
               >
-                `blah`
-              </Typography>
-            </Grid>
-            <Grid
-              item
-              container
-              justifyContent="flex-start"
-              xs={10}
-            >
-              <Typography
-                variant="body1"
-                noWrap={true}
-              >
-                {comment.text}
-              </Typography>
-            </Grid>
-          </Grid>;
+                <Grid
+                  item
+                  container
+                  justifyContent="flex-start"
+                  xs={2}
+                >
+                  <Typography
+                    variant="body1"
+                    noWrap={true}
+                  >
+                    {comment.username}
+                  </Typography>
+                </Grid>
+                <Grid
+                  item
+                  container
+                  justifyContent="flex-start"
+                  xs={10}
+                >
+                  <Typography
+                    variant="body1"
+                    noWrap={true}
+                  >
+                    {comment.text}
+                  </Typography>
+                </Grid>
+              </Grid>
+            </React.Fragment>
+          );
         })
       }
     </Grid>
