@@ -1,8 +1,8 @@
 {
   "name": "boolean",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Boolean demo app'",
-  "main": "boolean.js",
+  "main": "index.html",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/glowkeeper/boolean"
@@ -22,9 +22,7 @@
     "@material-ui/pickers": "^3.2.10",
     "@material-ui/styles": "^4.11.2",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-google-font-loader": "^1.1.0",
-    "typesafe-actions": "5.1.0"
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -56,11 +54,9 @@
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.24.0",
     "html-webpack-plugin": "^5.3.2",
-    "nodemon": "^2.0.7",
     "react-dev-utils": "^11.0.4",
     "redux-devtools-extension": "^2.13.9",
     "terser-webpack-plugin": "^5.1.4",
-    "typedoc": "^0.21.4",
     "typescript": "^4.2.4",
     "url-loader": "4.1.1",
     "webpack": "^5.36.2",

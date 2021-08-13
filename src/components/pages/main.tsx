@@ -1,7 +1,5 @@
 import React from 'react';
 
-import GoogleFontLoader from 'react-google-font-loader';
-
 import Grid from '@material-ui/core/Grid';
 
 import {Stories} from '../stories';
@@ -15,19 +13,6 @@ export const Main = () => {
 
   return (
     <Grid container className={classes.root}>
-
-      <GoogleFontLoader
-        fonts={[
-          {
-            font: 'Manrope',
-            weights: [300, 400, 500, 600, 700],
-          },
-          {
-            font: 'Roboto',
-            weights: [300, 400, 500, 600, 700],
-          },
-        ]}
-      />
 
       <Grid
         className={classes.content}
