@@ -48,7 +48,7 @@ export const Stories = () => {
       alignItems='center'
       style={{
         border: '1px solid grey',
-        height: '100px',
+        height: '200px',
       }}
       xs={12}
     >
@@ -79,7 +79,10 @@ export const Stories = () => {
                     item
                     container
                     justifyContent="flex-start"
-                    xs={1}
+                    style={{
+                      padding: theme.spacing(1)
+                    }}
+                    xs={3}
                   >
                     <Grid item container justifyContent="center" xs={12}>
                       <Avatar
