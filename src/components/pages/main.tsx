@@ -31,9 +31,7 @@ export const Main = () => {
 
       <Grid
         className={classes.content}
-        item
         container
-        xs={12}
       >
         <Grid
           item
@@ -42,10 +40,10 @@ export const Main = () => {
           <Stories />
           <Feeds />
         </Grid>
-
+        <Grid item xs={1} />
         <Grid
           item
-          xs={4}
+          xs={3}
         >
           <Profile />
         </Grid>

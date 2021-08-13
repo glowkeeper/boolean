@@ -130,8 +130,10 @@ const themeStyles = makeStyles({
     position: 'relative',
   },
   content: {
-    padding: theme.spacing(1),
-    margin: theme.spacing(0),
+    marginTop: theme.spacing(8),
+    marginBottom: theme.spacing(8),
+    marginLeft: theme.spacing(32),
+    marginRight: theme.spacing(32),
     color: theme.palette.text.primary,
     background: 'linear-gradient(#FFFFFF, #FFFFFF)',
     overflow: 'auto',

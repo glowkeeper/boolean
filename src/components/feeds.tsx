@@ -1,49 +1,40 @@
 import React, {useEffect, useState} from 'react';
-import {connect} from 'react-redux';
 
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
-
-import {getURL} from '../store/app/actions';
-import {
-  ApplicationState,
-  AppDispatch,
-  FeedsActionTypes,
-  FeedProps,
-  Feed,
-} from '../store';
 
 import {Comments} from './comments';
 import {Likes} from './likes';
 
 import {theme} from '../styles';
 
-import {Remote, Misc} from '../config';
+import {Remote, Misc, Feed} from '../config';
 
-interface FeedsStateProps {
-  feeds: FeedProps
-}
-
-interface FeedsDispatchProps {
-  getFeeds: (
-    url: string,
-    successAction: string,
-    failureAction: string,
-  ) => void
-}
-
-type Props = FeedsStateProps & FeedsDispatchProps
-
-const display = (props: Props) => {
+export const Feeds = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [feeds, setFeeds] = useState([] as Feed[]);
+
+  const getFeeds = async () => {
+    try {
+      const response = await fetch(Remote.feeds, {
+        method: 'GET',
+      });
+
+      if (!response.ok) {
+        const statusText = response.statusText;
+        throw new Error(`URL fetch error: ${Remote.feeds} ${statusText}`);
+      } else {
+        const feeds: Feed[] = await response.json();
+        setFeeds(feeds);
+      }
+    } catch ( error ) {
+      console.error( error.message );
+    }
+  };
 
   useEffect(() => {
-    props.getFeeds(
-        Remote.feeds,
-        FeedsActionTypes.FEEDS_SUCCESS,
-        FeedsActionTypes.FEEDS_FAILURE,
-    );
+    getFeeds();
     const loading = setTimeout(() => {
       setIsLoading(false);
     }, Misc.loadingDelay);
@@ -57,7 +48,7 @@ const display = (props: Props) => {
       { isLoading ?
           null : (
 
-              props.feeds.data.map( ( feed: Feed, index: number ) => {
+              feeds.map( ( feed: Feed, index: number ) => {
                 // console.log(feed);
                 return (
 
@@ -167,26 +158,3 @@ const display = (props: Props) => {
     </Grid>
   );
 };
-
-const mapStateToProps = (state: ApplicationState): FeedsStateProps => {
-  const feeds = state.feeds as FeedProps;
-  return {
-    feeds: feeds,
-  };
-};
-
-const mapDispatchToProps = (dispatch: AppDispatch): FeedsDispatchProps => {
-  return {
-    getFeeds: (
-        url: string,
-        successAction: string,
-        failureAction: string,
-    ) => dispatch(getURL(url, successAction, failureAction)),
-  };
-};
-
-export const Feeds =
-  connect<FeedsStateProps, FeedsDispatchProps, {}, ApplicationState>(
-      mapStateToProps,
-      mapDispatchToProps,
-  )(display);

@@ -5,9 +5,7 @@ import Typography from '@material-ui/core/Typography';
 
 import {theme} from '../styles';
 
-import {
-  Like,
-} from '../store';
+import {Like} from '../config';
 
 interface StateProps {
   likes: Array<Like>

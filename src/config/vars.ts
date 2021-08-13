@@ -1,6 +1,7 @@
 /** @class App */
 class App {
-  static readonly me = 'Dr Steve'
+  static readonly user = 'fab.you'
+  static readonly userName = 'fabulous'
 }
 
 export {

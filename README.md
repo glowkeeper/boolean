@@ -16,7 +16,7 @@ Programming task for [Boolean](https://boolean.co.uk/).
 
 - [node](https://nodejs.org/en/)
 - [npm](https://www.npmjs.com/)
-- [React](https://reactjs.org/) + [Redux](https://redux.js.org/) + [TypeScript](https://www.typescriptlang.org/) + [Material UI](https://material-ui.com/)
+- [React](https://reactjs.org/) + [TypeScript](https://www.typescriptlang.org/) + [Material UI](https://material-ui.com/)
 
 ## Install
 

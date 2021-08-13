@@ -1,45 +1,36 @@
 import React, {useEffect, useState} from 'react';
-import {connect} from 'react-redux';
 
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import {CircularProgress} from '@material-ui/core';
 
-import {getURL} from '../store/app/actions';
-import {
-  ApplicationState,
-  AppDispatch,
-  StoriesActionTypes,
-  StoryProps,
-  Story,
-} from '../store';
+import {Remote, Misc, Story} from '../config';
 
-import {Remote, Misc} from '../config';
-
-interface StoriesStateProps {
-  stories: StoryProps
-}
-
-interface StoriesDispatchProps {
-  getStories: (
-    url: string,
-    successAction: string,
-    failureAction: string,
-  ) => void
-}
-
-type Props = StoriesStateProps & StoriesDispatchProps
-
-const display = (props: Props) => {
+export const Stories = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [stories, setStories] = useState([] as Story[]);
+
+  const getStories = async () => {
+    try {
+      const response = await fetch(Remote.stories, {
+        method: 'GET',
+      });
+
+      if (!response.ok) {
+        const statusText = response.statusText;
+        throw new Error(`URL fetch error: ${Remote.stories} ${statusText}`);
+      } else {
+        const stories: Story[] = await response.json();
+        setStories(stories);
+      }
+    } catch ( error ) {
+      console.error( error.message );
+    }
+  };
 
   useEffect(() => {
-    props.getStories(
-        Remote.stories,
-        StoriesActionTypes.STORIES_SUCCESS,
-        StoriesActionTypes.STORIES_FAILURE,
-    );
+    getStories();
     const loading = setTimeout(() => {
       setIsLoading(false);
     }, Misc.loadingDelay);
@@ -70,7 +61,7 @@ const display = (props: Props) => {
           />
         </Grid> : (
 
-            props.stories.data.map( ( story: Story, index: number ) => {
+            stories.map( ( story: Story, index: number ) => {
               return (
 
                 <React.Fragment key={index}>
@@ -102,26 +93,3 @@ const display = (props: Props) => {
     </Grid>
   );
 };
-
-const mapStateToProps = (state: ApplicationState): StoriesStateProps => {
-  const stories = state.stories as StoryProps;
-  return {
-    stories: stories,
-  };
-};
-
-const mapDispatchToProps = (dispatch: AppDispatch): StoriesDispatchProps => {
-  return {
-    getStories: (
-        url: string,
-        successAction: string,
-        failureAction: string,
-    ) => dispatch(getURL(url, successAction, failureAction)),
-  };
-};
-
-export const Stories =
-  connect<StoriesStateProps, StoriesDispatchProps, {}, ApplicationState>(
-      mapStateToProps,
-      mapDispatchToProps,
-  )(display);

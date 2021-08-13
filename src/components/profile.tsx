@@ -6,7 +6,7 @@ import Avatar from '@material-ui/core/Avatar';
 
 import {App} from '../config';
 
-import MyIcon from '../images/me.png';
+import UserIcon from '../images/user.png';
 
 export const Profile = () => {
   return (
@@ -14,21 +14,31 @@ export const Profile = () => {
       container
       alignItems='center'
     >
-      <Grid item container justifyContent="flex-start" xs={1}>
+      <Grid item container justifyContent="flex-start" xs={2}>
         <Avatar
           alt='My Icon'
           style={{
             border: '0.5px solid red',
           }}
-          src={MyIcon} />
+          src={UserIcon} />
       </Grid>
-      <Grid item container justifyContent="flex-start" xs={11}>
-        <Typography
-          variant="body1"
-          noWrap={true}
-        >
-          {App.me}
-        </Typography>
+      <Grid item container justifyContent="flex-start" xs={10}>
+        <Grid item container justifyContent="flex-start" xs={12}>
+          <Typography
+            variant="body1"
+            noWrap={true}
+          >
+            {App.user}
+          </Typography>
+        </Grid>
+        <Grid item container justifyContent="flex-start" xs={12}>
+          <Typography
+            variant="body1"
+            noWrap={true}
+          >
+            {App.userName}
+          </Typography>
+        </Grid>
       </Grid>
 
     </Grid>

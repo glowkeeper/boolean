@@ -6,9 +6,7 @@ import Link from '@material-ui/core/Link';
 
 import {theme} from '../styles';
 
-import {
-  Comment,
-} from '../store';
+import {App, Comment} from '../config';
 
 interface StateProps {
   comments: Array<Comment>
@@ -20,6 +18,7 @@ export const Comments = (props: Props) => {
   const [showCommentForm, setShowCommentForm] = useState(false);
   const [comments, setComments] = useState([] as Comment[]);
   const [comment, setComment] = useState('');
+  const commentLabel = 'Comment: ';
 
   useEffect(() => {
     setComments(props.comments);
@@ -28,7 +27,7 @@ export const Comments = (props: Props) => {
   const addComment = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     const thisComment: Comment = {
-      username: 'me',
+      username: App.user,
       text: comment,
     };
     const theseComments: Comment[] = [thisComment, ...comments];
@@ -114,7 +113,7 @@ export const Comments = (props: Props) => {
         >
           <form onSubmit={addComment}>
             <label>
-              Comment:
+              {commentLabel}
               <input
                 type="text"
                 value={comment}
@@ -123,7 +122,13 @@ export const Comments = (props: Props) => {
                 }}
               />
             </label>
-            <input type="submit" value="Submit" />
+            <input
+              type="submit"
+              value="Submit"
+              style={{
+                marginLeft: theme.spacing(1),
+              }}
+            />
           </form>
         </Grid> :
         null
