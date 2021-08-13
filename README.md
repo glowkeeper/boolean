@@ -10,6 +10,7 @@ Programming task for [Boolean](https://boolean.co.uk/).
 - [Install](#install)
 - [Build](#build)
 - [Maintainer](#maintainer)
+- [License](#license)
 
 ## Built Using
 
@@ -28,10 +29,6 @@ Create the app' by running `npm run prod` - that creates a file called _index.ht
 ## Maintainer
 
 [Steve Huckle](https://glowkeeper.github.io/).
-
-## Contributing
-
-Contributions welcome - please email the maintainer.
 
 ## License
 
