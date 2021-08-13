@@ -5,21 +5,21 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 
-import {getURL} from '../../store/app/actions';
+import {getURL} from '../store/app/actions';
 import {
   ApplicationState,
   AppDispatch,
   FeedsActionTypes,
   FeedProps,
   Feed,
-} from '../../store';
+} from '../store';
 
-import {Comments} from '../comments';
-import {Likes} from '../likes';
+import {Comments} from './comments';
+import {Likes} from './likes';
 
-import {theme} from '../../styles';
+import {theme} from '../styles';
 
-import {Remote, Misc} from '../../config';
+import {Remote, Misc} from '../config';
 
 interface FeedsStateProps {
   feeds: FeedProps

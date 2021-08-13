@@ -1,4 +1,4 @@
-/** @class Local */
+/** @class Misc */
 class Misc {
      static readonly loadingDelay = 2500
 }

@@ -4,8 +4,9 @@ import GoogleFontLoader from 'react-google-font-loader';
 
 import Grid from '@material-ui/core/Grid';
 
-import {Stories} from './stories';
-import {Feeds} from './feeds';
+import {Stories} from '../stories';
+import {Feeds} from '../feeds';
+import {Profile} from '../profile';
 
 import {themeStyles} from '../../styles';
 
@@ -36,11 +37,6 @@ export const Main = () => {
       >
         <Grid
           item
-          xs={2}
-        ></Grid>
-
-        <Grid
-          item
           xs={8}
         >
           <Stories />
@@ -49,8 +45,10 @@ export const Main = () => {
 
         <Grid
           item
-          xs={2}
-        ></Grid>
+          xs={4}
+        >
+          <Profile />
+        </Grid>
       </Grid>=
 
     </Grid>

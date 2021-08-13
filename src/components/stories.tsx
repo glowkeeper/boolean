@@ -6,16 +6,16 @@ import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import {CircularProgress} from '@material-ui/core';
 
-import {getURL} from '../../store/app/actions';
+import {getURL} from '../store/app/actions';
 import {
   ApplicationState,
   AppDispatch,
   StoriesActionTypes,
   StoryProps,
   Story,
-} from '../../store';
+} from '../store';
 
-import {Remote, Misc} from '../../config';
+import {Remote, Misc} from '../config';
 
 interface StoriesStateProps {
   stories: StoryProps
