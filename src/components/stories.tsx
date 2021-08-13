@@ -7,6 +7,8 @@ import {CircularProgress} from '@material-ui/core';
 
 import {Remote, Misc, Story} from '../config';
 
+import {theme} from '../styles';
+
 export const Stories = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [stories, setStories] = useState([] as Story[]);
@@ -61,11 +63,24 @@ export const Stories = () => {
           />
         </Grid> : (
 
-            stories.map( ( story: Story, index: number ) => {
+          <Grid
+            container
+            justifyContent="space-between"
+            style={{
+              padding: theme.spacing(1),
+            }}
+          >
+
+            { stories.map( ( story: Story, index: number ) => {
               return (
 
                 <React.Fragment key={index}>
-                  <Grid item container justifyContent="flex-start" xs={1}>
+                  <Grid
+                    item
+                    container
+                    justifyContent="flex-start"
+                    xs={1}
+                  >
                     <Grid item container justifyContent="center" xs={12}>
                       <Avatar
                         alt='Story Icon'
@@ -86,7 +101,8 @@ export const Stories = () => {
 
                 </React.Fragment>
               );
-            })
+            })}
+          </Grid>
         )
       }
 

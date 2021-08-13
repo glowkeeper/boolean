@@ -30,7 +30,7 @@ export const Likes = (props: Props) => {
         >
           {props.likes.length ?
             `${props.likes[0].username}
-            Likes and ${props.likes.length - 1} other(s)` :
+            Likes and ${props.likes.length - 1} Other(s)` :
             (
               `0 Likes`
             )

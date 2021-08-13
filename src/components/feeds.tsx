@@ -49,7 +49,6 @@ export const Feeds = () => {
           null : (
 
               feeds.map( ( feed: Feed, index: number ) => {
-                // console.log(feed);
                 return (
 
                   <React.Fragment key={index}>

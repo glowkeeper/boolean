@@ -32,6 +32,7 @@ export const Comments = (props: Props) => {
     };
     const theseComments: Comment[] = [thisComment, ...comments];
     setComments(theseComments);
+    setShowCommentForm(false);
   };
 
   return (
