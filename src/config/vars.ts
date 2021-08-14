@@ -15,6 +15,7 @@ class Text {
   static readonly feedAvatar = 'Feed Icon'
   static readonly storyAvatar = 'Story Icon'
   static readonly likeIcon = 'Like'
+  static readonly oneLike = '1 Like'
   static readonly zeroLikes = '0 Likes'
 }
 

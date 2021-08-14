@@ -56,7 +56,7 @@ export const Likes = (props: Props) => {
         >
           {props.likes.length ?
             `${props.likes[0].username} Likes and ${(props.likes.length - 1) + (like ? 1 : 0)} Other(s)` :
-            `${Text.zeroLikes}`
+            ( like ? `${Text.oneLike}` : `${Text.zeroLikes}` )
           }
         </Typography>
       </Grid>
