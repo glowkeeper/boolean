@@ -54,7 +54,7 @@ export const Comments = (props: Props) => {
         <Typography
           variant="body2"
         >
-          {comments.length} Comment(s)
+          {comments.length} {Text.comments}
         </Typography>
       </Grid>
 

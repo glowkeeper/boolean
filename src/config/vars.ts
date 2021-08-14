@@ -9,6 +9,7 @@ class Text {
 
   static readonly fetchError = 'URL fetch error:'
   
+  static readonly comments = 'Comment(s)'
   static readonly commentAdd = 'Add a Comment'
   static readonly commentLabel = 'Comment:'
   static readonly myAvatar = 'My Icon'
