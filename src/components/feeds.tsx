@@ -111,6 +111,8 @@ export const Feeds = () => {
                         />
                       </Grid>
 
+                      <Likes likes={feed.likes} />
+
                       <Grid
                         item
                         container
@@ -143,7 +145,6 @@ export const Feeds = () => {
                         </Grid>
                       </Grid>
 
-                      <Likes likes={feed.likes} />
                       <Comments comments={feed.comments} />
 
                     </Grid>

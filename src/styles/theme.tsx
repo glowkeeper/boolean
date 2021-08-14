@@ -80,7 +80,7 @@ let theme = createTheme({
       fontSize: '2vh',
       fontWeight: 400,
       fontFamily: '"Lato", "Arial", "sans-serif", "Roboto"',
-      color: '#000000',
+      color: '#7E7878',
     },
     caption: {
       fontSize: '1.9vh',
@@ -90,7 +90,7 @@ let theme = createTheme({
     },
     button: {
       fontSize: '2vh',
-      textTransform: 'uppercase',
+      textTransform: 'none',
       fontWeight: 500,
       fontFamily: '"Lato", "Arial", "sans-serif", "Roboto"',
       color: '#000000',
@@ -103,13 +103,13 @@ let theme = createTheme({
     },
     text: {
       primary: '#000000',
-      secondary: '#000000',
+      secondary: '#DB1F2A',
     },
     primary: {
-      main: '#929396',
+      main: '#000000',
     },
     secondary: {
-      main: '#ff671e',
+      main: '#DB1F2A',
     },
     error: red,
     warning: orange,
@@ -128,6 +128,21 @@ const themeStyles = makeStyles({
     height: '100vh',
     width: '100vw',
     position: 'relative',
+    '& .MuiIconButton-root': {
+      padding: '0',
+    },
+    '& .MuiButton-root': {
+      padding: '0',
+      marginLeft: theme.spacing(1),
+    },
+    '& .MuiInput-root': {
+      border: '1px solid grey',
+      paddingLeft: theme.spacing(1),
+      paddingRight: theme.spacing(1),
+    },
+    '& .MuiButton-outlinedSizeSmall': {
+      padding: '0',
+    },
   },
   content: {
     marginTop: theme.spacing(8),
@@ -139,6 +154,9 @@ const themeStyles = makeStyles({
     overflow: 'auto',
     width: '100vw',
   },
+  comments: {
+    width: '100%',
+  }
 });
 
 export {theme, themeStyles};

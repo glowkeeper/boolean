@@ -2,9 +2,11 @@ import React, {useEffect, useState} from 'react';
 
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
+import Button from '@material-ui/core/Button';
 
-import {theme} from '../styles';
+import {theme, themeStyles} from '../styles';
 
 import {App, Comment} from '../config';
 
@@ -18,7 +20,9 @@ export const Comments = (props: Props) => {
   const [showCommentForm, setShowCommentForm] = useState(false);
   const [comments, setComments] = useState([] as Comment[]);
   const [comment, setComment] = useState('');
-  const commentLabel = 'Comment: ';
+  const commentLabel = 'Comment:';
+
+  const classes = themeStyles();
 
   useEffect(() => {
     setComments(props.comments);
@@ -49,7 +53,7 @@ export const Comments = (props: Props) => {
         xs={12}
       >
         <Typography
-          variant="body1"
+          variant="body2"
         >
           {comments.length} Comment(s)
         </Typography>
@@ -102,38 +106,74 @@ export const Comments = (props: Props) => {
           setShowCommentForm(true);
         }}
       >
-        Add a Comment
-      </Link>
-
-      { showCommentForm ?
         <Grid
           item
           container
           justifyContent="flex-start"
           xs={12}
         >
-          <form onSubmit={addComment}>
-            <label>
-              {commentLabel}
-              <input
-                type="text"
-                value={comment}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                  setComment(e.target.value);
-                }}
-              />
-            </label>
-            <input
-              type="submit"
-              value="Submit"
-              style={{
-                marginLeft: theme.spacing(1),
-              }}
-            />
-          </form>
-        </Grid> :
-        null
-      }
+          <Typography
+            variant="body2"
+            noWrap={true}
+          >
+            Add a Comment
+          </Typography>
+        </Grid>
+        
+      </Link>
+
+      <Grid
+        container
+      >
+
+        { showCommentForm ?
+            <form onSubmit={addComment} className={classes.comments}>
+              <Grid
+                container
+                justifyContent="flex-start"
+                alignItems="center"
+              >
+                <Grid
+                  item
+                  xs={2}
+                >
+                  <label htmlFor="comment">{commentLabel}</label>
+                </Grid>
+                <Grid
+                  item
+                  xs={6}
+                >
+                  <TextField
+                    fullWidth
+                    size="small"
+                    name="comment"
+                    type="text"
+                    value={comment}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                      setComment(e.target.value);
+                    }}
+                    InputProps={{disableUnderline: true}}
+                  />
+                </Grid>            
+                <Grid
+                  item
+                  xs={4}
+                >
+                  <Button
+                    type='submit'
+                    size='small'
+                    variant='outlined'
+                    color='primary'
+                  >
+                    Submit
+                  </Button>
+                </Grid>
+              </Grid>
+            </form> :
+          null
+        }
+      </Grid>
+
     </Grid>
   );
 };

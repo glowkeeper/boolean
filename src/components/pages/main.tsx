@@ -32,7 +32,7 @@ export const Main = () => {
         >
           <Profile />
         </Grid>
-      </Grid>=
+      </Grid>
 
     </Grid>
   );
