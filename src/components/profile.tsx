@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 
-import {App} from '../config';
+import {App, Text} from '../config';
 
 import UserIcon from '../images/user.png';
 
@@ -16,7 +16,7 @@ export const Profile = () => {
     >
       <Grid item container justifyContent="flex-start" xs={2}>
         <Avatar
-          alt='My Icon'
+          alt={Text.myAvatar}
           style={{
             border: '0.5px solid red',
           }}

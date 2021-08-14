@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import {CircularProgress} from '@material-ui/core';
 
-import {Remote, Misc, Story} from '../config';
+import {Text, Remote, Misc, Story} from '../config';
 
 import {theme} from '../styles';
 
@@ -21,7 +21,7 @@ export const Stories = () => {
 
       if (!response.ok) {
         const statusText = response.statusText;
-        throw new Error(`URL fetch error: ${Remote.stories} ${statusText}`);
+        throw new Error(`${Text.fetchError} ${Remote.stories} ${statusText}`);
       } else {
         const stories: Story[] = await response.json();
         setStories(stories);
@@ -86,7 +86,7 @@ export const Stories = () => {
                   >
                     <Grid item container justifyContent="center" xs={12}>
                       <Avatar
-                        alt='Story Icon'
+                        alt={Text.storyAvatar}
                         style={{
                           border: '0.5px solid red',
                         }}

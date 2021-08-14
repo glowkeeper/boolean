@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 
 import {theme, themeStyles} from '../styles';
 
-import {App, Comment} from '../config';
+import {App, Text, Comment} from '../config';
 
 interface StateProps {
   comments: Array<Comment>
@@ -20,7 +20,6 @@ export const Comments = (props: Props) => {
   const [showCommentForm, setShowCommentForm] = useState(false);
   const [comments, setComments] = useState([] as Comment[]);
   const [comment, setComment] = useState('');
-  const commentLabel = 'Comment:';
 
   const classes = themeStyles();
 
@@ -116,7 +115,7 @@ export const Comments = (props: Props) => {
             variant="body2"
             noWrap={true}
           >
-            Add a Comment
+            {Text.commentAdd}
           </Typography>
         </Grid>
         
@@ -137,7 +136,7 @@ export const Comments = (props: Props) => {
                   item
                   xs={2}
                 >
-                  <label htmlFor="comment">{commentLabel}</label>
+                  <label htmlFor="comment">{Text.commentLabel}</label>
                 </Grid>
                 <Grid
                   item

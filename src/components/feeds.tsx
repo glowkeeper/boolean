@@ -9,7 +9,7 @@ import {Likes} from './likes';
 
 import {theme} from '../styles';
 
-import {Remote, Misc, Feed} from '../config';
+import {Text, Remote, Misc, Feed} from '../config';
 
 export const Feeds = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -23,7 +23,7 @@ export const Feeds = () => {
 
       if (!response.ok) {
         const statusText = response.statusText;
-        throw new Error(`URL fetch error: ${Remote.feeds} ${statusText}`);
+        throw new Error(`${Text.fetchError} ${Remote.feeds} ${statusText}`);
       } else {
         const feeds: Feed[] = await response.json();
         setFeeds(feeds);
@@ -76,7 +76,7 @@ export const Feeds = () => {
                       >
                         <Grid item container justifyContent="flex-start" xs={2}>
                           <Avatar
-                            alt='Feed Icon'
+                            alt={Text.feedAvatar}
                             style={{
                               border: '0.1px solid lightgray',
                             }}

@@ -7,7 +7,7 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 import {theme} from '../styles';
 
-import {Like} from '../config';
+import {Text, Like} from '../config';
 
 interface StateProps {
   likes: Array<Like>
@@ -20,7 +20,6 @@ export const Likes = (props: Props) => {
 
   const doLike = () =>  {
     setLike(!like);
-    console.log('Like!');
   };
 
   return (
@@ -38,7 +37,7 @@ export const Likes = (props: Props) => {
       >
         <div onClick={doLike}>
           <IconButton
-            aria-label="Like"
+            aria-label={Text.likeIcon}
           >
             <FavoriteBorderIcon 
               color={ like ? 'secondary' : 'primary' }
@@ -56,11 +55,8 @@ export const Likes = (props: Props) => {
           variant="body1"
         >
           {props.likes.length ?
-            `${props.likes[0].username}
-            Likes and ${(props.likes.length - 1) + (like ? 1 : 0)} Other(s)` :
-            (
-              `0 Likes`
-            )
+            `${props.likes[0].username} Likes and ${(props.likes.length - 1) + (like ? 1 : 0)} Other(s)` :
+            `${Text.zeroLikes}`
           }
         </Typography>
       </Grid>
